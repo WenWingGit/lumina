@@ -1,19 +1,24 @@
 <template>
-  <div class="create-view">
-    <header class="create-header">
-      <button class="back-button" @click="goBack">
+  <div class="edit-view paper-texture">
+    <header class="edit-header decorative-border">
+      <button class="back-button cute-button" @click="goBack">
         <span class="back-icon">←</span>
       </button>
       <div class="page-title-container">
-        <span class="title-icon">🎯</span>
-        <h1 class="page-title">新目标</h1>
+        <span class="title-icon">✏️</span>
+        <h1 class="page-title handwritten">编辑目标</h1>
       </div>
       <div style="width: 44px;"></div>
     </header>
 
-    <div class="form-container">
-      <div class="journal-form">
-        <p class="journal-text">
+    <div v-if="loading" class="loading-container">
+      <div class="loading-spinner"></div>
+      <p class="handwritten">加载中...</p>
+    </div>
+
+    <div v-else class="form-container">
+      <div class="journal-form journal-card">
+        <p class="journal-text handwritten">
           我想要在未来完成
           <input 
             v-model="form.title" 
@@ -35,57 +40,59 @@
             placeholder="单位"
           />
         </p>
+        <div class="decoration" style="top: 10px; right: 10px;">🎯</div>
       </div>
 
       <div class="form-section">
-        <label class="form-label">目标类型</label>
+        <label class="form-label handwritten">目标类型</label>
         <div class="type-selector">
           <button 
             v-for="type in goalTypes" 
             :key="type.value"
-            class="type-button"
+            class="type-button cute-button"
             :class="{ active: form.type === type.value }"
             @click="form.type = type.value"
           >
             <span class="type-icon">{{ type.icon }}</span>
-            <span class="type-label">{{ type.label }}</span>
+            <span class="type-label handwritten">{{ type.label }}</span>
           </button>
         </div>
       </div>
 
       <div class="form-section">
-        <label class="form-label">当前进度</label>
+        <label class="form-label handwritten">当前进度</label>
         <input 
           v-model.number="form.current_value" 
           type="number" 
-          class="input-field"
+          class="input-field journal-input"
           placeholder="从多少开始？"
         />
       </div>
 
       <div class="form-section">
-        <button class="milestone-toggle" @click="showMilestones = !showMilestones">
+        <button class="milestone-toggle cute-button" @click="showMilestones = !showMilestones">
           <span class="toggle-icon">{{ showMilestones ? '▼' : '+' }}</span>
-          <span>添加沿途风景</span>
+          <span class="handwritten">添加沿途风景</span>
         </button>
 
-        <div v-if="showMilestones" class="milestones-section">
+        <div v-if="showMilestones" class="milestones-section journal-card">
+          <div class="decoration" style="top: 10px; right: 10px;">🌟</div>
           <div v-for="(milestone, index) in form.milestones" :key="index" class="milestone-item">
             <div class="milestone-inputs">
               <input 
                 v-model.number="milestone.value" 
                 type="number" 
-                class="input-field milestone-value"
+                class="input-field milestone-value journal-input"
                 placeholder="数值"
               />
               <input 
                 v-model="milestone.reward_text" 
                 type="text" 
-                class="input-field milestone-reward"
+                class="input-field milestone-reward journal-input"
                 placeholder="奖励文案"
               />
             </div>
-            <button class="remove-button" @click="removeMilestone(index)">
+            <button class="remove-button cute-button" @click="removeMilestone(index)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
@@ -93,30 +100,32 @@
             </button>
           </div>
 
-          <button class="add-milestone-button" @click="addMilestone">
-            + 添加里程碑
+          <button class="add-milestone-button cute-button" @click="addMilestone">
+            <span class="handwritten">+ 添加里程碑</span>
           </button>
         </div>
       </div>
 
       <button 
-        class="submit-button btn-primary" 
+        class="submit-button btn-primary cute-button" 
         :disabled="!canSubmit || loading"
         @click="handleSubmit"
       >
-        {{ loading ? '保存中...' : '开始这段旅程 ✨' }}
+        <span class="handwritten">{{ loading ? '保存中...' : '保存修改 ✨' }}</span>
       </button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { ref, computed, onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import { api } from '@/utils/request';
 
 const router = useRouter();
-const loading = ref(false);
+const route = useRoute();
+
+const loading = ref(true);
 const showMilestones = ref(false);
 
 const goalTypes = [
@@ -141,6 +150,36 @@ const canSubmit = computed(() => {
          form.value.unit;
 });
 
+const fetchGoal = async () => {
+  try {
+    loading.value = true;
+    const goals = await api.getGoals();
+    const goal = goals.find(g => g.id === parseInt(route.params.id));
+    
+    if (goal) {
+      form.value = {
+        title: goal.title,
+        type: goal.type,
+        target_value: goal.target_value,
+        current_value: goal.current_value,
+        unit: goal.unit,
+        milestones: []
+      };
+      
+      const milestones = await api.getMilestones(goal.id);
+      form.value.milestones = milestones.map(m => ({
+        value: m.value,
+        reward_text: m.reward_text
+      }));
+    }
+  } catch (error) {
+    console.error('获取目标失败:', error);
+    alert('获取目标失败，请重试');
+  } finally {
+    loading.value = false;
+  }
+};
+
 const addMilestone = () => {
   form.value.milestones.push({
     value: null,
@@ -158,17 +197,18 @@ const handleSubmit = async () => {
   try {
     loading.value = true;
     
-    const data = { ...form.value };
-    data.milestones = data.milestones.filter(m => m.value && m.reward_text);
-    if (data.milestones.length === 0) {
-      delete data.milestones;
-    }
-
-    await api.createGoal(data);
-    router.push('/');
+    await api.updateGoal(route.params.id, {
+      title: form.value.title,
+      type: form.value.type,
+      target_value: form.value.target_value,
+      current_value: form.value.current_value,
+      unit: form.value.unit
+    });
+    
+    router.push(`/detail/${route.params.id}`);
   } catch (error) {
-    console.error('创建目标失败:', error);
-    alert('创建失败，请重试');
+    console.error('更新目标失败:', error);
+    alert('更新失败，请重试');
   } finally {
     loading.value = false;
   }
@@ -177,14 +217,18 @@ const handleSubmit = async () => {
 const goBack = () => {
   router.back();
 };
+
+onMounted(() => {
+  fetchGoal();
+});
 </script>
 
 <style scoped>
-.create-view {
+.edit-view {
   min-height: calc(100vh - 40px);
 }
 
-.create-header {
+.edit-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -232,6 +276,25 @@ const goBack = () => {
   color: var(--color-primary);
   font-family: 'ZCOOL QingKe HuangYou', cursive;
   text-shadow: 2px 2px 0 rgba(143, 156, 130, 0.2);
+}
+
+.loading-container {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-bg-alt);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .form-container {
@@ -535,5 +598,17 @@ const goBack = () => {
   cursor: not-allowed;
   transform: none;
   box-shadow: 3px 3px 0 rgba(107, 122, 94, 0.2);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 </style>

@@ -12,6 +12,12 @@ const routes = [
     component: () => import('@/views/Create.vue')
   },
   {
+    path: '/edit/:id',
+    name: 'Edit',
+    component: () => import('@/views/Edit.vue'),
+    props: true
+  },
+  {
     path: '/detail/:id',
     name: 'Detail',
     component: () => import('@/views/Detail.vue'),

@@ -248,7 +248,7 @@ const handleDeleteRecord = async (recordId) => {
 
 const handleEdit = () => {
   showMenu.value = false;
-  alert('编辑功能开发中...');
+  router.push(`/edit/${goal.value.id}`);
 };
 
 const handleDelete = async () => {
