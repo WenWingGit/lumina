@@ -5,7 +5,7 @@
         <span class="back-icon">←</span>
       </button>
       <div class="page-title-container">
-        <span class="title-icon">✏️</span>
+        <span class="title-icon">💖</span>
         <h1 class="page-title handwritten">编辑目标</h1>
       </div>
       <div style="width: 44px;"></div>
@@ -40,7 +40,7 @@
             placeholder="单位"
           />
         </p>
-        <div class="decoration" style="top: 10px; right: 10px;">🎯</div>
+        <div class="decoration" style="top: 10px; right: 10px;">💝</div>
       </div>
 
       <div class="form-section">
@@ -76,7 +76,7 @@
         </button>
 
         <div v-if="showMilestones" class="milestones-section journal-card">
-          <div class="decoration" style="top: 10px; right: 10px;">🌟</div>
+          <div class="decoration" style="top: 10px; right: 10px;">🎁</div>
           <div v-for="(milestone, index) in form.milestones" :key="index" class="milestone-item">
             <div class="milestone-inputs">
               <input 
@@ -129,8 +129,8 @@ const loading = ref(true);
 const showMilestones = ref(false);
 
 const goalTypes = [
-  { value: 'accumulation', label: '累积', icon: '📈' },
-  { value: 'trend', label: '趋势', icon: '📉' },
+  { value: 'accumulation', label: '累积', icon: '💪' },
+  { value: 'trend', label: '趋势', icon: '📈' },
   { value: 'cycle', label: '周期', icon: '🔄' }
 ];
 
@@ -273,9 +273,9 @@ onMounted(() => {
 .page-title {
   font-size: 28px;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   font-family: 'ZCOOL QingKe HuangYou', cursive;
-  text-shadow: 2px 2px 0 rgba(143, 156, 130, 0.2);
+  text-shadow: 2px 2px 0 rgba(255, 182, 193, 0.4);
 }
 
 .loading-container {
@@ -304,11 +304,11 @@ onMounted(() => {
 }
 
 .journal-form {
-  background: var(--color-white);
+  background: linear-gradient(145deg, #FFFFFF, #FFF5F8);
   border-radius: var(--radius-lg);
   padding: 32px 28px;
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
-  border: 2px solid #E8E2D5;
+  box-shadow: 4px 4px 0 rgba(255, 182, 193, 0.2);
+  border: 2px solid #FFD1DC;
   position: relative;
 }
 
@@ -319,7 +319,7 @@ onMounted(() => {
   left: 8px;
   right: -8px;
   bottom: -8px;
-  background: var(--color-bg-alt);
+  background: linear-gradient(145deg, #FFE6EF, #FFD1DC);
   border-radius: var(--radius-lg);
   z-index: -1;
 }
@@ -329,11 +329,11 @@ onMounted(() => {
   line-height: 2.2;
   color: var(--color-text-primary);
   font-family: 'Ma Shan Zheng', cursive;
-  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNNTAgMzBDNTAgMjcuNzE1NzMgNDguMjg0MjcgMjYgNDYgMjZDNDYuOTYxNTQgMjUgNDcuNDg3MzIgMjQgNDggMjRDNDguNTEyNjggMjQgNDkuMDM4NDYgMjUgNTAgMjZDNTAgMjUuMTAxNTYgNTAgMjQuNTcyODggNTAgMjRDMzAgMjQgMzAgMzAgNTAgMzBaIiBmaWxsPSIjZDVjOGI1IiBmaWxsLW9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==');
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNNTAgMzBDNTAgMjcuNzE1NzMgNDguMjg0MjcgMjYgNDYgMjZDNDYuOTYxNTQgMjUgNDcuNDg3MzIgMjQgNDggMjRDNDguNTEyNjggMjQgNDkuMDM4NDYgMjUgNTAgMjZDNTAgMjUuMTAxNTYgNTAgMjQuNTcyODggNTAgMjRDMzAgMjQgMzAgMzAgNTAgMzBaIiBmaWxsPSIjZmZkMWRjIiBmaWxsLW9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==');
   background-size: 60px 60px;
   padding: 20px;
   border-radius: var(--radius-md);
-  border: 2px dashed #E8E2D5;
+  border: 2px dashed #FFD1DC;
 }
 
 .journal-input {
@@ -343,13 +343,13 @@ onMounted(() => {
   border-bottom: 3px solid var(--color-primary);
   text-align: center;
   font-size: 20px;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   font-weight: 600;
   font-family: 'Ma Shan Zheng', cursive;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   margin: 0 4px;
   border-radius: 4px 4px 0 0;
-  box-shadow: 0 2px 0 rgba(143, 156, 130, 0.2);
+  box-shadow: 0 2px 0 rgba(255, 182, 193, 0.3);
 }
 
 .journal-input::placeholder {

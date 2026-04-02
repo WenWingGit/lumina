@@ -1,12 +1,12 @@
 <template>
-  <div class="detail-view">
-    <header class="detail-header">
-      <button class="back-button" @click="goBack">
+  <div class="detail-view paper-texture">
+    <header class="detail-header decorative-border">
+      <button class="back-button cute-button" @click="goBack">
         <svg class="back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M19 12H5M12 19l-7-7 7-7" />
         </svg>
       </button>
-      <h1 class="page-title">{{ goal?.title || '加载中...' }}</h1>
+      <h1 class="page-title handwritten">{{ goal?.title || '加载中...' }}</h1>
       <div class="menu-button" @click="showMenu = !showMenu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="6" r="2" />

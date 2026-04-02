@@ -1,12 +1,12 @@
 <template>
-  <div class="create-view">
-    <header class="create-header">
-      <button class="back-button" @click="goBack">
+  <div class="create-view paper-texture">
+    <header class="create-header decorative-border">
+      <button class="back-button cute-button" @click="goBack">
         <span class="back-icon">←</span>
       </button>
       <div class="page-title-container">
-        <span class="title-icon">🎯</span>
-        <h1 class="page-title">新目标</h1>
+        <span class="title-icon">🎀</span>
+        <h1 class="page-title handwritten">新目标</h1>
       </div>
       <div style="width: 44px;"></div>
     </header>
@@ -120,8 +120,8 @@ const loading = ref(false);
 const showMilestones = ref(false);
 
 const goalTypes = [
-  { value: 'accumulation', label: '累积', icon: '📈' },
-  { value: 'trend', label: '趋势', icon: '📉' },
+  { value: 'accumulation', label: '累积', icon: '💪' },
+  { value: 'trend', label: '趋势', icon: '📈' },
   { value: 'cycle', label: '周期', icon: '🔄' }
 ];
 

@@ -2,12 +2,12 @@
   <div class="home-view paper-texture">
     <header class="home-header decorative-border">
       <div class="app-title-container">
-        <span class="app-icon">🌸</span>
+        <span class="app-icon">🎀</span>
         <h1 class="app-title handwritten">Lumina</h1>
-        <span class="app-subtitle cute-tag">治愈系目标管理</span>
+        <span class="app-subtitle cute-tag">少女心目标管理</span>
       </div>
       <router-link to="/profile" class="profile-link cute-button">
-        <span class="profile-icon">👤</span>
+        <span class="profile-icon">👧</span>
       </router-link>
     </header>
 
@@ -18,11 +18,11 @@
       </div>
 
       <div v-else-if="goals.length === 0" class="empty-state">
-        <div class="empty-icon">✨</div>
+        <div class="empty-icon">💖</div>
         <h2 class="handwritten">还没有目标</h2>
-        <p class="handwritten">点击下方按钮，开始你的治愈之旅吧</p>
-        <div class="decoration" style="top: 20px; right: 20px;">🎨</div>
-        <div class="decoration" style="bottom: 20px; left: 20px;">🌈</div>
+        <p class="handwritten">点击下方按钮，开始你的少女之旅吧</p>
+        <div class="decoration" style="top: 20px; right: 20px;">🎀</div>
+        <div class="decoration" style="bottom: 20px; left: 20px;">✨</div>
       </div>
 
       <div v-else class="goals-list">
@@ -96,9 +96,9 @@ const getTypeLabel = (type) => {
 
 const getGoalIcon = (type) => {
   const icons = {
-    accumulation: '📈',
+    accumulation: '💪',
     cycle: '🔄',
-    trend: '📉'
+    trend: '📈'
   };
   return icons[type] || '✨';
 };
@@ -155,20 +155,16 @@ onMounted(() => {
 .app-title {
   font-size: 32px;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   font-family: 'ZCOOL QingKe HuangYou', cursive;
   letter-spacing: 2px;
-  text-shadow: 2px 2px 0 rgba(143, 156, 130, 0.2);
+  text-shadow: 2px 2px 0 rgba(255, 182, 193, 0.4);
 }
 
 .app-subtitle {
   font-size: 12px;
   color: var(--color-text-secondary);
   font-family: 'ZCOOL KuaiLe', cursive;
-  background: var(--color-bg-alt);
-  padding: 4px 12px;
-  border-radius: var(--radius-xs);
-  border: 1px solid #E8E2D5;
 }
 
 .profile-link {
@@ -177,16 +173,16 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-white);
+  background: linear-gradient(145deg, #FFFFFF, #FFF5F8);
   border-radius: 50%;
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 0 rgba(255, 182, 193, 0.3);
   transition: var(--transition-default);
-  border: 2px solid #E8E2D5;
+  border: 2px solid #FFD1DC;
 }
 
 .profile-link:hover {
   transform: scale(1.1) rotate(5deg);
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 5px 5px 0 rgba(255, 182, 193, 0.4);
 }
 
 .profile-icon {
@@ -263,14 +259,14 @@ onMounted(() => {
   left: 8px;
   right: -8px;
   bottom: -8px;
-  background: var(--color-bg-alt);
+  background: linear-gradient(145deg, #FFE6EF, #FFD1DC);
   border-radius: var(--radius-lg);
   z-index: -1;
 }
 
 .goal-card:hover {
-  transform: translateY(-4px) rotate(0.5deg);
-  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px) rotate(1deg);
+  box-shadow: 5px 5px 0 rgba(255, 182, 193, 0.3);
 }
 
 .goal-header {
@@ -287,7 +283,7 @@ onMounted(() => {
   font-weight: 600;
   color: var(--color-text-primary);
   font-family: 'Ma Shan Zheng', cursive;
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 1px 0 rgba(255, 182, 193, 0.3);
   flex: 1;
 }
 
@@ -297,26 +293,26 @@ onMounted(() => {
   border-radius: var(--radius-xs);
   font-weight: 600;
   font-family: 'ZCOOL KuaiLe', cursive;
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
-  border: 1px solid transparent;
+  box-shadow: 3px 3px 0 rgba(255, 182, 193, 0.3);
+  border: 2px solid transparent;
 }
 
 .goal-type.accumulation {
-  background: linear-gradient(135deg, var(--color-primary-light), #C9D6B8);
+  background: linear-gradient(135deg, var(--color-primary-light), #FFE6EF);
   color: var(--color-primary-dark);
   border-color: var(--color-primary);
 }
 
 .goal-type.cycle {
-  background: linear-gradient(135deg, var(--color-secondary), #D8C8B8);
+  background: linear-gradient(135deg, var(--color-secondary), #FFE6EF);
   color: var(--color-text-primary);
-  border-color: #B8A898;
+  border-color: #E6D6FA;
 }
 
 .goal-type.trend {
-  background: linear-gradient(135deg, var(--color-accent), #E4B5B5);
-  color: var(--color-white);
-  border-color: #C49595;
+  background: linear-gradient(135deg, var(--color-accent), #E6F6FF);
+  color: var(--color-text-primary);
+  border-color: #ADD8E6;
 }
 
 .goal-progress {
@@ -330,16 +326,16 @@ onMounted(() => {
   background: var(--color-bg-alt);
   border-radius: var(--radius-xs);
   overflow: hidden;
-  border: 2px solid #E8E2D5;
-  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 2px solid #FFD1DC;
+  box-shadow: inset 2px 2px 0 rgba(255, 182, 193, 0.1);
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light), #C9D6B8);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light), #FFE6EF);
   border-radius: var(--radius-xs);
   transition: width 0.5s ease-out;
-  box-shadow: 2px 0 0 rgba(143, 156, 130, 0.3);
+  box-shadow: 2px 0 0 rgba(255, 182, 193, 0.4);
   position: relative;
 }
 
@@ -366,22 +362,22 @@ onMounted(() => {
   font-size: 14px;
   color: var(--color-text-secondary);
   font-family: 'ZCOOL QingKe HuangYou', cursive;
-  background: var(--color-bg);
+  background: linear-gradient(145deg, #FFF5F8, #FFE6EF);
   padding: 4px 12px;
   border-radius: var(--radius-xs);
-  border: 1px solid #E8E2D5;
+  border: 2px solid #FFD1DC;
 }
 
 .progress-percent {
   font-size: 18px;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
   font-family: 'ZCOOL KuaiLe', cursive;
-  background: linear-gradient(135deg, var(--color-primary-light), #C9D6B8);
+  background: linear-gradient(135deg, var(--color-primary-light), #FFE6EF);
   padding: 4px 16px;
   border-radius: var(--radius-xs);
-  box-shadow: 2px 2px 0 rgba(143, 156, 130, 0.3);
-  border: 1px solid var(--color-primary);
+  box-shadow: 3px 3px 0 rgba(255, 182, 193, 0.4);
+  border: 2px solid var(--color-primary);
 }
 
 .fab-button {
@@ -395,30 +391,30 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 5px 5px 0 rgba(107, 122, 94, 0.3);
+  box-shadow: 5px 5px 0 rgba(255, 145, 164, 0.4);
   transition: var(--transition-default);
   z-index: 100;
-  border: 3px solid #E8E2D5;
+  border: 3px solid #FFD1DC;
   animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
   0% {
-    box-shadow: 5px 5px 0 rgba(107, 122, 94, 0.3);
+    box-shadow: 5px 5px 0 rgba(255, 145, 164, 0.4);
   }
   50% {
-    box-shadow: 8px 8px 0 rgba(107, 122, 94, 0.4);
+    box-shadow: 8px 8px 0 rgba(255, 145, 164, 0.5);
     transform: scale(1.05);
   }
   100% {
-    box-shadow: 5px 5px 0 rgba(107, 122, 94, 0.3);
+    box-shadow: 5px 5px 0 rgba(255, 145, 164, 0.4);
   }
 }
 
 .fab-button:hover {
   background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
   transform: scale(1.1) rotate(5deg);
-  box-shadow: 6px 6px 0 rgba(107, 122, 94, 0.4);
+  box-shadow: 6px 6px 0 rgba(255, 145, 164, 0.5);
 }
 
 .fab-icon {

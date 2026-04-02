@@ -1,28 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&family=ZCOOL+QingKe+HuangYou&family=Bubblegum+Sans&family=Comic+Neue&display=swap');
 
 :root {
-  --color-bg: #F9F8F4;
-  --color-bg-alt: #F0EDE6;
-  --color-primary: #8F9C82;
-  --color-primary-light: #B5C1A8;
-  --color-primary-dark: #6B7A5E;
-  --color-secondary: #C8B8A8;
-  --color-accent: #D4A5A5;
-  --color-text-primary: #4A4A4A;
-  --color-text-secondary: #7A7A7A;
+  --color-bg: #FFF5F8;
+  --color-bg-alt: #FFE6EF;
+  --color-primary: #FFB6C1;
+  --color-primary-light: #FFD1DC;
+  --color-primary-dark: #FF91A4;
+  --color-secondary: #E6E6FA;
+  --color-accent: #ADD8E6;
+  --color-text-primary: #5A5A5A;
+  --color-text-secondary: #8A8A8A;
   --color-text-muted: #A0A0A0;
   --color-white: #FFFFFF;
-  --color-success: #7FA99B;
-  --color-warning: #E5C89C;
-  --color-error: #D4A5A5;
+  --color-success: #98D8C8;
+  --color-warning: #FFE4B5;
+  --color-error: #FFB6C1;
   
-  --radius-lg: 24px;
-  --radius-md: 16px;
-  --radius-sm: 12px;
-  --radius-xs: 8px;
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-sm: 16px;
+  --radius-xs: 12px;
   
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-soft: 0 4px 20px rgba(255, 182, 193, 0.2);
+  --shadow-medium: 0 8px 30px rgba(255, 182, 193, 0.3);
   
   --transition-default: all 0.3s ease-in-out;
   --transition-fast: all 0.15s ease-out;
@@ -46,21 +46,28 @@
 }
 
 .decorative-border::before {
-  content: '🌸';
+  content: '🎀';
   position: absolute;
-  top: -10px;
+  top: -12px;
   left: 20px;
-  font-size: 20px;
+  font-size: 24px;
   z-index: 1;
+  animation: spin-slow 8s linear infinite;
 }
 
 .decorative-border::after {
-  content: '✨';
+  content: '💕';
   position: absolute;
-  top: -10px;
+  top: -12px;
   right: 20px;
-  font-size: 20px;
+  font-size: 24px;
   z-index: 1;
+  animation: spin-slow 8s linear infinite reverse;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* 手账本风格的纸张效果 */
@@ -112,15 +119,16 @@
 /* 可爱的标签样式 */
 .cute-tag {
   display: inline-block;
-  padding: 4px 12px;
-  border-radius: 20px;
+  padding: 6px 14px;
+  border-radius: 24px;
   font-size: 14px;
   font-weight: 600;
   font-family: 'ZCOOL KuaiLe', 'Comic Neue', cursive;
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
-  border: 1px solid #E8E2D5;
+  box-shadow: 3px 3px 0 rgba(255, 182, 193, 0.3);
+  border: 2px solid #FFD1DC;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(145deg, #FFF5F8, #FFD1DC);
 }
 
 .cute-tag::before {
@@ -174,11 +182,11 @@
 /* 手账本风格的卡片 */
 .journal-card {
   position: relative;
-  background: var(--color-white);
+  background: linear-gradient(145deg, #FFFFFF, #FFF5F8);
   border-radius: var(--radius-lg);
   padding: 28px;
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
-  border: 2px solid #E8E2D5;
+  box-shadow: 4px 4px 0 rgba(255, 182, 193, 0.2);
+  border: 2px solid #FFD1DC;
   overflow: hidden;
 }
 
@@ -189,18 +197,18 @@
   left: 8px;
   right: -8px;
   bottom: -8px;
-  background: var(--color-bg-alt);
+  background: linear-gradient(145deg, #FFE6EF, #FFD1DC);
   border-radius: var(--radius-lg);
   z-index: -1;
 }
 
 .journal-card::after {
-  content: '📝';
+  content: '🎀';
   position: absolute;
   top: 10px;
   right: 15px;
-  font-size: 24px;
-  opacity: 0.3;
+  font-size: 28px;
+  opacity: 0.4;
   transform: rotate(10deg);
 }
 
@@ -211,7 +219,10 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9InBhdHRlcm4iIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0wIDBoNDB2NDBoLTQweiIgZmlsbD0ibm9uZSIvPgogICAgICA8cGF0aCBkPSJNMCAxMGg0MHYyMGgtNDB6IiBmaWxsPSIjZjVmNGU4IiBmaWxsLW9wYWNpdHk9IjAuMiIvPgogICAgICA8cGF0aCBkPSJNMTAgMGg2djQwaC02em0xNiAwSDI2djQwaC02em0xNiAwSDQydjQwaC02em0tMjYgMGgtNnY0MGg2eiIgZmlsbD0iI2Y1ZjRlOCIgZmlsbC1vcGFjaXR5PSIwLjEiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPgo8L3N2Zz4=');
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(173, 216, 230, 0.15) 0%, transparent 50%),
+    url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9InBhdHRlcm4iIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0wIDBoNDB2NDBoLTQweiIgZmlsbD0ibm9uZSIvPgogICAgICA8cGF0aCBkPSJNNSA1aDEwdjEwaC0xMHoiIGZpbGw9IiNmZmQxZGMiIGZpbGwtb3BhY2l0eT0iMC4xIi8+CiAgICAgIDxwYXRoIGQ9Ik0yNSAyNWgxMHYxMGgtMTB6IiBmaWxsPSIjZmZkMWRjIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+Cjwvc3ZnPg==');
 }
 
 #app {
@@ -247,12 +258,14 @@ a {
   padding: 24px;
   transition: var(--transition-default);
   position: relative;
-  border: 1px solid #E8E2D5;
+  border: 2px solid #FFD1DC;
+  background: linear-gradient(145deg, #FFFFFF, #FFF5F8);
 }
 
 .card:hover {
   box-shadow: var(--shadow-medium);
-  transform: translateY(-2px) rotate(0.5deg);
+  transform: translateY(-4px) rotate(1deg);
+  border-color: #FFB6C1;
 }
 
 .card::before {
@@ -262,7 +275,7 @@ a {
   left: 10px;
   right: -10px;
   bottom: -10px;
-  background: var(--color-bg-alt);
+  background: linear-gradient(145deg, #FFE6EF, #FFD1DC);
   border-radius: var(--radius-lg);
   z-index: -1;
 }
@@ -289,40 +302,41 @@ a {
 }
 
 .btn-primary {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
   color: var(--color-white);
   padding: 14px 28px;
   border-radius: var(--radius-lg);
   font-size: 16px;
   font-weight: 600;
   font-family: 'ZCOOL KuaiLe', cursive;
-  box-shadow: 3px 3px 0 rgba(107, 122, 94, 0.3);
+  box-shadow: 4px 4px 0 rgba(255, 145, 164, 0.4);
   position: relative;
   overflow: hidden;
+  border: 2px solid #FFD1DC;
 }
 
 .btn-primary:hover {
-  background: var(--color-primary-dark);
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 rgba(107, 122, 94, 0.3);
+  box-shadow: 2px 2px 0 rgba(255, 145, 164, 0.4);
 }
 
 .btn-secondary {
-  background: var(--color-bg-alt);
+  background: linear-gradient(135deg, var(--color-bg-alt), var(--color-secondary));
   color: var(--color-text-primary);
   padding: 14px 28px;
   border-radius: var(--radius-lg);
   font-size: 16px;
   font-weight: 600;
   font-family: 'ZCOOL KuaiLe', cursive;
-  box-shadow: 3px 3px 0 rgba(120, 110, 98, 0.2);
-  border: 1px solid #E8E2D5;
+  box-shadow: 4px 4px 0 rgba(180, 180, 200, 0.3);
+  border: 2px solid #FFE6EF;
 }
 
 .btn-secondary:hover {
-  background: var(--color-secondary);
+  background: linear-gradient(135deg, var(--color-secondary), #FFE6EF);
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 rgba(120, 110, 98, 0.2);
+  box-shadow: 2px 2px 0 rgba(180, 180, 200, 0.3);
 }
 
 .input-field {
@@ -332,23 +346,23 @@ a {
   width: 100%;
   font-size: 16px;
   transition: var(--transition-fast);
-  border: 2px solid #E8E2D5;
+  border: 2px solid #FFD1DC;
   font-family: 'Ma Shan Zheng', cursive;
-  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: inset 2px 2px 0 rgba(255, 182, 193, 0.1);
 }
 
 .input-field:focus {
   background: var(--color-white);
   border-color: var(--color-primary);
-  box-shadow: inset 2px 2px 0 rgba(143, 156, 130, 0.2);
+  box-shadow: inset 2px 2px 0 rgba(255, 182, 193, 0.3);
   transform: scale(1.02);
 }
 
 .journal-input {
   font-family: 'Ma Shan Zheng', cursive;
   font-size: 18px;
-  color: var(--color-primary);
-  border-bottom: 2px solid var(--color-primary);
+  color: var(--color-primary-dark);
+  border-bottom: 3px solid var(--color-primary);
   padding: 4px 8px;
   background: transparent;
   transition: var(--transition-fast);
@@ -357,6 +371,7 @@ a {
 .journal-input:focus {
   border-color: var(--color-primary-dark);
   transform: scale(1.05);
+  color: var(--color-primary-dark);
 }
 
 .glass {
