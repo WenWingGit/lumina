@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&family=ZCOOL+QingKe+HuangYou&family=Bubblegum+Sans&family=Comic+Neue&display=swap');
+
 :root {
   --color-bg: #F9F8F4;
   --color-bg-alt: #F0EDE6;
@@ -31,8 +33,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&family=ZCOOL+QingKe+HuangYou&family=Bubblegum+Sans&family=Comic+Neue&display=swap');
 
 /* 可爱的图标字体 */
 @font-face {
