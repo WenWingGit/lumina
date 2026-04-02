@@ -1,0 +1,128 @@
+:root {
+  --color-bg: #F9F8F4;
+  --color-bg-alt: #F0EDE6;
+  --color-primary: #8F9C82;
+  --color-primary-light: #B5C1A8;
+  --color-primary-dark: #6B7A5E;
+  --color-secondary: #C8B8A8;
+  --color-accent: #D4A5A5;
+  --color-text-primary: #4A4A4A;
+  --color-text-secondary: #7A7A7A;
+  --color-text-muted: #A0A0A0;
+  --color-white: #FFFFFF;
+  --color-success: #7FA99B;
+  --color-warning: #E5C89C;
+  --color-error: #D4A5A5;
+  
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+  
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+  
+  --transition-default: all 0.3s ease-in-out;
+  --transition-fast: all 0.15s ease-out;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: var(--transition-default);
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 24px;
+  transition: var(--transition-default);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 12px 28px;
+  border-radius: var(--radius-lg);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  background: var(--color-bg-alt);
+  color: var(--color-text-primary);
+  padding: 12px 28px;
+  border-radius: var(--radius-lg);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.btn-secondary:hover {
+  background: var(--color-secondary);
+}
+
+.input-field {
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  width: 100%;
+  font-size: 16px;
+  transition: var(--transition-fast);
+}
+
+.input-field:focus {
+  background: var(--color-white);
+  box-shadow: 0 0 0 3px rgba(143, 156, 130, 0.2);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
